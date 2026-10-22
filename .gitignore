@@ -1,0 +1,11 @@
+# local tooling used to generate placeholder reels
+.venv/
+.sysroot/
+node_modules/
+
+# screenshots produced while checking the build
+artifacts/
+
+# OS noise
+.DS_Store
+Thumbs.db

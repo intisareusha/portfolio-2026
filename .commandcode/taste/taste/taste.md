@@ -1,0 +1,12 @@
+# Taste
+- Prefers large tasks broken into sequential phases matching natural sections of the project, tackled one phase at a time ("1 by 1"). Confidence: 0.8
+- Wants a detailed plan written to a markdown file (e.g., `docs/PLAN.md`) as an executable, phase-by-phase checklist before implementation begins. Confidence: 0.75
+- Keeps a standalone notes file as the source of truth for his requirements/vision and expects the plan doc to be re-read against it and continuously updated/persisted ("continuously update plan.md ... so that it is saved") as that source changes; before making edits he expects the agent to (re)read both the notes file and the plan and change code accordingly. Confidence: 0.75
+- Prefers to supply/manage media assets himself (images and videos, e.g., "that i will provide later") and have the agent wire them into the site's references and use an interim placeholder until the real file lands, rather than generating final assets; he drops the real file into the project folder himself and expects the agent to locate it there by name and swap it in. Confidence: 0.7
+- Favors a lean, uncluttered UI: repeatedly asks to strip decorative stat chips, helper/hint labels, and redundant CTA links ("320+ clips delivered", "40+ brands", "See all projects"). Confidence: 0.5
+- Communicates in terse imperatives and expects the agent to just execute the instruction ("do as i said", "make the changes as said") rather than pause for clarification or confirmation (e.g., "read the ... file and make changes ... according to information i gave you"). Confidence: 0.7
+- When adapting a downloaded template/site, prefers to keep the existing design and CSS untouched and change only content/copy, personal details, links, and images. Confidence: 0.8
+- Prefers placeholder tokens (e.g., `{{NAME}}`, `{{EMAIL}}`) left in the files to be filled in later, rather than hard-coding personal details up front. Confidence: 0.6
+- Cares about polished, balanced layout spacing: flags large empty gaps between sections as "looking so bad" and asks for them minimized/tightened so the page reads as intentional. Confidence: 0.6
+- Defers aesthetic judgment to the agent — states the goal ("so that it looks good") and expects it to choose concrete sizes/spacing values itself rather than being asked for exact numbers. Confidence: 0.55
+- Drops change requests as a plaintext instruction file inside the project (e.g., `demos/replace.txt`) and expects the agent to open that file and implement exactly what it says. Confidence: 0.6

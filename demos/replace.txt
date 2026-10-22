@@ -1,0 +1,13 @@
+in  the about section i want the text "Four years of cutting short-form for clinics, coaches and founders — with a strategist’s eye on the first three seconds"
+to be removed ... in the left side of about section i also want to remove the current content and replace it with a iphone screen where i vedio will play in instagrame account ..
+follow the below instruction to make the effect right ..
+
+Create a responsive web component that looks like a sleek, modern smartphone frame (mockup) with a video playing inside it. 
+
+Requirements:
+- The outer container should look like a smartphone body with a dark, rounded border (bezel) and a subtle inner shadow to give it depth.
+- Inside the frame, embed an HTML5 <video> element that takes up the full width and height of the screen area, using 'object-cover' so it fills the display nicely.
+- The video should be set to autoplay, loop, mute, and play inline.
+- Underneath the smartphone frame, add a sleek bottom navigation bar floating inside or just below the device viewport with standard social media icons (Home, Discover, Create (+), Inbox, Profile).
+- The entire section should look premium, utilizing Tailwind CSS for clean layout and dark mode styling.
+

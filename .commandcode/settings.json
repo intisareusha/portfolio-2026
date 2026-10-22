@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(dir:*)",
+      "Shell(npm:*)",
+      "Shell(curl -s http://localhost:3000)",
+      "Shell(agent-browser:*)",
+      "Shell(findstr:*)",
+      "Shell(curl -s -o NUL -w \"awwfle.mp4 -> %{http_code} (%{size_download} bytes)\\n\" http://localhost:3000/assets/video/awwfle.mp4)",
+      "Shell(git:*)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}

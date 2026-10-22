@@ -1,0 +1,14 @@
+{
+  "name": "hanifeh-short-form-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Responsive short-form content studio portfolio — static HTML/CSS/JS",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
