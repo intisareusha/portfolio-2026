@@ -1,13 +1,6 @@
-in  the about section i want the text "Four years of cutting short-form for clinics, coaches and founders — with a strategist’s eye on the first three seconds"
-to be removed ... in the left side of about section i also want to remove the current content and replace it with a iphone screen where i vedio will play in instagrame account ..
-follow the below instruction to make the effect right ..
+need to make a little bit of change in the our work section .. so far everything in fine.. but what i want is that when user long clicks on any video and be able to move the 
+cards right or left .. what you did is cards are moving where the cursor is going.. but that is creating a problem because when i try to click and on any perticular video the 
+card slides in the direction of cursor.. so i want to slide the cards smoothly as long as the user is pressing on the mouse and moving right or left.. the user should have the control 
+where the cards slides ...
 
-Create a responsive web component that looks like a sleek, modern smartphone frame (mockup) with a video playing inside it. 
-
-Requirements:
-- The outer container should look like a smartphone body with a dark, rounded border (bezel) and a subtle inner shadow to give it depth.
-- Inside the frame, embed an HTML5 <video> element that takes up the full width and height of the screen area, using 'object-cover' so it fills the display nicely.
-- The video should be set to autoplay, loop, mute, and play inline.
-- Underneath the smartphone frame, add a sleek bottom navigation bar floating inside or just below the device viewport with standard social media icons (Home, Discover, Create (+), Inbox, Profile).
-- The entire section should look premium, utilizing Tailwind CSS for clean layout and dark mode styling.
-
+also the showreel on the home section should play automatically with sound when the user stays on the home section  .. and there should be no button but only one button .. that the mute button .. 

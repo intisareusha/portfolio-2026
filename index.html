@@ -233,11 +233,16 @@
         </div>
 
         <div class="hero__portrait">
-          <video class="hero__reel" id="hero-reel" controls playsinline preload="metadata" poster="assets/img/work/reel-01.jpg" aria-label="CLIP STACK showreel">
-            <source src="assets/video/showreel.mp4" type="video/mp4" />
-            <source src="assets/video/showreel.webm" type="video/webm" />
-            Your browser does not support the video tag.
-          </video>
+          <div class="hero__stage">
+            <video class="hero__reel" id="hero-reel" loop playsinline preload="auto" poster="assets/img/work/reel-01.jpg" aria-label="CLIP STACK showreel">
+              <source src="assets/video/firstvid.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <button class="hero__sound is-muted" id="hero-sound" type="button" aria-label="Unmute showreel" aria-pressed="false">
+              <svg class="i-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5.5 6.8 9H3.5v6h3.3L11 18.5Z"/><path d="M15.2 8.8a4.4 4.4 0 0 1 0 6.4M17.8 6.4a8 8 0 0 1 0 11.2"/></svg>
+              <svg class="i-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5.5 6.8 9H3.5v6h3.3L11 18.5Z"/><path d="m15.5 9.5 5 5M20.5 9.5l-5 5"/></svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -246,7 +251,7 @@
     <div class="col col--right">
       <article class="card card--featured reveal" data-spotlight>
         <a class="featured__media" href="#work" data-scroll aria-label="See our work">
-          <img src="assets/img/work/reel-01.jpg" alt="Featured CLIP STACK project" width="720" height="1280" loading="lazy" />
+          <img src="assets/img/mypic.png" alt="Featured CLIP STACK project" width="1122" height="1402" loading="lazy" />
           <span class="featured__scrim" aria-hidden="true"></span>
          
           <span class="badge badge--top">Featured &rsquo;26</span>
@@ -326,7 +331,7 @@
               </div>
               <div class="phone__foot">
                 <div class="phone__user">
-                  <span class="phone__avatar"></span>
+                  <span class="phone__avatar"><img src="./assets/img/logo.png" alt="CLIP STACK profile" /></span>
                   <span>clipstack</span>
                 </div>
                 <p class="phone__caption">We make every clip count. &middot; follow for daily cutdowns</p>
@@ -346,33 +351,21 @@
     </aside>
 
     <div class="about__content">
-      <div class="about__copy reveal">
-        <p class="about__lead">I&rsquo;m Hanifeh &mdash; a short-form editor and content strategist. I help clinics, coaches and founders turn long, messy footage into clips people actually finish watching.</p>
-        <p>I work in the edit but I think like a strategist. What is the first second doing? Where is the payoff? Which line makes someone save the post? Every project ships with captions, hook variations and a posting-ready export, so your team never has to guess.</p>
-        <p>My work sits where clean design meets native platform pacing: nothing over-produced, nothing that looks like an ad. Just content that feels like it belongs in the feed &mdash; and earns the follow.</p>
+      <div class="about__intro reveal" data-spotlight>
+        <span class="about__badge">CLIP STACK</span>
+        <h3 class="about__intro-title">An editing studio that gives you your time back.</h3>
+        <p>We&rsquo;re a short-form studio for clinics, coaches and founders. Send us the long, messy footage you already have &mdash; podcasts, webinars, client calls, B-roll &mdash; and we shape it into scroll-stopping clips with hooks, captions and sound design built in.</p>
+        <p>No back-and-forth, no guesswork: strategy, edit and posting-ready exports are handled end to end. Your team ships consistent content every week and holds on to its most valuable asset &mdash; <strong>time</strong>.</p>
       </div>
 
-      <dl class="stats reveal">
-        <div class="stat"><dt>Videos delivered</dt><dd><span data-count="320">0</span><span class="stat__plus">+</span></dd></div>
-        <div class="stat"><dt>Creators &amp; brands</dt><dd><span data-count="48">0</span><span class="stat__plus">+</span></dd></div>
-        <div class="stat"><dt>Organic views</dt><dd><span data-count="6.4">0</span><span class="stat__plus">M</span></dd></div>
-      </dl>
-
-      <div class="process reveal">
+      <div class="about__process reveal">
         <h3 class="process__title">How we work</h3>
         <ol class="steps">
-          <li><span class="steps__num">01</span><h4>Send the footage</h4><p>Drop a folder, a Drive link or a backlog of takes. No brief is too rough.</p></li>
-          <li><span class="steps__num">02</span><h4>Hook &amp; structure</h4><p>We agree on angles, hooks and the one job each clip has to do.</p></li>
-          <li><span class="steps__num">03</span><h4>Edit &amp; refine</h4><p>First cut in 48&ndash;72h, then revisions inside Frame.io or Drive.</p></li>
-          <li><span class="steps__num">04</span><h4>Ship &amp; repurpose</h4><p>Posting-ready exports plus cutdowns for every platform you use.</p></li>
+          <li class="step"><span class="step__num">01</span><h4>Send the footage</h4><p>Drop a folder, a Drive link or a backlog of takes. No brief is too rough &mdash; raw is all we need.</p></li>
+          <li class="step"><span class="step__num">02</span><h4>Hook &amp; structure</h4><p>We agree on angles, hooks and the one job each clip has to do.</p></li>
+          <li class="step"><span class="step__num">03</span><h4>Edit &amp; refine</h4><p>First cut in 48&ndash;72h, then revisions inside Frame.io or Drive.</p></li>
+          <li class="step"><span class="step__num">04</span><h4>Ship &amp; repurpose</h4><p>Posting-ready exports plus cutdowns for every platform you use.</p></li>
         </ol>
-      </div>
-
-      <div class="tools reveal">
-        <span class="tools__label">Toolkit</span>
-        <ul>
-          <li>Premiere Pro</li><li>After Effects</li><li>DaVinci Resolve</li><li>CapCut</li><li>Photoshop</li><li>Frame.io</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -386,185 +379,124 @@
     <p class="section__lede">A short selection of recent projects. Tap any card to watch the clip.</p>
   </div>
 
-  <div class="filters reveal" role="group" aria-label="Filter work by category">
-    <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">All <span class="filter__count">6</span></button>
-    <button class="filter" type="button" data-filter="shortform" aria-pressed="false">Short-form</button>
-    <button class="filter" type="button" data-filter="motion" aria-pressed="false">Motion graphics</button>
-    <button class="filter" type="button" data-filter="medical" aria-pressed="false">Medical &amp; aesthetic</button>
-    <button class="filter" type="button" data-filter="personal" aria-pressed="false">Personal brand</button>
+  <div class="work__gallery reveal" id="work-gallery">
+    <div class="work__track" id="work-track">
+      <article class="work-card" data-spotlight>
+        <button class="work-card__btn" type="button"
+          data-reel="assets/video/slide_1.mp4" data-poster="assets/img/work/reel-01.jpg"
+          data-title="Lumière Clinic — Treatment explainer" data-cat-label="Selected work"
+          data-client="Lumière Clinic" data-meta="0:32 · 412K views"
+          data-desc="A calm 32-second explainer for a skin clinic. On-screen steps, soft motion titles and a booking CTA at the end.">
+          <span class="work-card__media">
+            <video autoplay loop muted playsinline preload="metadata" poster="assets/img/work/reel-01.jpg">
+              <source src="assets/video/slide_1.mp4" type="video/mp4" />
+            </video>
+            <span class="work-card__scrim" aria-hidden="true"></span>
+            <span class="play play--card" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.6v12.8a1 1 0 0 0 1.53.85l9.5-6.4a1 1 0 0 0 0-1.7l-9.5-6.4a1 1 0 0 0-1.53.85Z"/></svg>
+            </span>
+            <span class="work-card__tag">Selected work</span>
+            <span class="work-card__body">
+              <span class="work-card__client">Lumière Clinic</span>
+              <span class="work-card__title">Treatment explainer</span>
+            </span>
+          </span>
+        </button>
+      </article>
+
+      <article class="work-card" data-spotlight>
+        <button class="work-card__btn" type="button"
+          data-reel="assets/video/slide_2.mp4" data-poster="assets/img/work/reel-02.jpg"
+          data-title="Nika R. — GRWM morning routine" data-cat-label="Selected work"
+          data-client="Nika R." data-meta="0:45 · 1.2M views"
+          data-desc="Get-ready-with-me cut with beat-matched transitions, soft captions and a hook that lands in the first 0.8 seconds.">
+          <span class="work-card__media">
+            <video autoplay loop muted playsinline preload="metadata" poster="assets/img/work/reel-02.jpg">
+              <source src="assets/video/slide_2.mp4" type="video/mp4" />
+            </video>
+            <span class="work-card__scrim" aria-hidden="true"></span>
+            <span class="play play--card" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.6v12.8a1 1 0 0 0 1.53.85l9.5-6.4a1 1 0 0 0 0-1.7l-9.5-6.4a1 1 0 0 0-1.53.85Z"/></svg>
+            </span>
+            <span class="work-card__tag">Selected work</span>
+            <span class="work-card__body">
+              <span class="work-card__client">Nika R.</span>
+              <span class="work-card__title">GRWM morning routine</span>
+            </span>
+          </span>
+        </button>
+      </article>
+
+      <article class="work-card" data-spotlight>
+        <button class="work-card__btn" type="button"
+          data-reel="assets/video/slide_3.mp4" data-poster="assets/img/work/reel-03.jpg"
+          data-title="Coach Arman — Hook test" data-cat-label="Selected work"
+          data-client="Coach Arman" data-meta="0:28 · 684K views"
+          data-desc="Three hook variations of the same fitness take, edited back-to-back to test retention before a paid push.">
+          <span class="work-card__media">
+            <video autoplay loop muted playsinline preload="metadata" poster="assets/img/work/reel-03.jpg">
+              <source src="assets/video/slide_3.mp4" type="video/mp4" />
+            </video>
+            <span class="work-card__scrim" aria-hidden="true"></span>
+            <span class="play play--card" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.6v12.8a1 1 0 0 0 1.53.85l9.5-6.4a1 1 0 0 0 0-1.7l-9.5-6.4a1 1 0 0 0-1.53.85Z"/></svg>
+            </span>
+            <span class="work-card__tag">Selected work</span>
+            <span class="work-card__body">
+              <span class="work-card__client">Coach Arman</span>
+              <span class="work-card__title">Hook test — 3 variations</span>
+            </span>
+          </span>
+        </button>
+      </article>
+
+      <article class="work-card" data-spotlight>
+        <button class="work-card__btn" type="button"
+          data-reel="assets/video/slide_4.mp4" data-poster="assets/img/work/reel-04.jpg"
+          data-title="Derma Studio — Launch motion pack" data-cat-label="Selected work"
+          data-client="Derma Studio" data-meta="0:19 · brand kit"
+          data-desc="A launch motion pack: animated logo, end cards, stat cards and lower thirds built as reusable After Effects templates.">
+          <span class="work-card__media">
+            <video autoplay loop muted playsinline preload="metadata" poster="assets/img/work/reel-04.jpg">
+              <source src="assets/video/slide_4.mp4" type="video/mp4" />
+            </video>
+            <span class="work-card__scrim" aria-hidden="true"></span>
+            <span class="play play--card" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.6v12.8a1 1 0 0 0 1.53.85l9.5-6.4a1 1 0 0 0 0-1.7l-9.5-6.4a1 1 0 0 0-1.53.85Z"/></svg>
+            </span>
+            <span class="work-card__tag">Selected work</span>
+            <span class="work-card__body">
+              <span class="work-card__client">Derma Studio</span>
+              <span class="work-card__title">Launch motion pack</span>
+            </span>
+          </span>
+        </button>
+      </article>
+
+      <article class="work-card" data-spotlight>
+        <button class="work-card__btn" type="button"
+          data-reel="assets/video/slide_5.mp4" data-poster="assets/img/work/reel-05.jpg"
+          data-title="Haven Studio — Founder story" data-cat-label="Selected work"
+          data-client="Haven Studio" data-meta="0:58 · 238K views"
+          data-desc="A founder story built from a 40-minute interview: punch-ins, b-roll and captions that keep the narrative moving.">
+          <span class="work-card__media">
+            <video autoplay loop muted playsinline preload="metadata" poster="assets/img/work/reel-05.jpg">
+              <source src="assets/video/slide_5.mp4" type="video/mp4" />
+            </video>
+            <span class="work-card__scrim" aria-hidden="true"></span>
+            <span class="play play--card" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.6v12.8a1 1 0 0 0 1.53.85l9.5-6.4a1 1 0 0 0 0-1.7l-9.5-6.4a1 1 0 0 0-1.53.85Z"/></svg>
+            </span>
+            <span class="work-card__tag">Selected work</span>
+            <span class="work-card__body">
+              <span class="work-card__client">Haven Studio</span>
+              <span class="work-card__title">Founder story</span>
+            </span>
+          </span>
+        </button>
+      </article>
+    </div>
   </div>
-
-  <div class="work__grid" id="work-grid">
-    <article class="work-card reveal" data-cat="medical" data-spotlight>
-      <button class="work-card__btn" type="button"
-        data-reel="assets/video/reel-01.mp4" data-webm="assets/video/reel-01.webm" data-poster="assets/img/work/reel-01.jpg"
-        data-title="Lumière Clinic — Treatment explainer" data-cat-label="Medical &amp; aesthetic"
-        data-client="Lumière Clinic" data-meta="0:32 · 412K views"
-        data-desc="A calm 32-second explainer for a skin clinic. On-screen steps, soft motion titles and a booking CTA at the end.">
-        <span class="work-card__media">
-          <img src="assets/img/work/reel-01.jpg" alt="" width="720" height="1280" loading="lazy" />
-          <video muted loop playsinline preload="none" poster="assets/img/work/reel-01.jpg" aria-hidden="true" tabindex="-1">
-            <source src="assets/video/reel-01.webm" type="video/webm" />
-            <source src="assets/video/reel-01.mp4" type="video/mp4" />
-          </video>
-          <span class="work-card__scrim" aria-hidden="true"></span>
-          <span class="work-card__hook">Skin that still<br />feels like skin</span>
-          <span class="play play--card" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.6v12.8a1 1 0 0 0 1.53.85l9.5-6.4a1 1 0 0 0 0-1.7l-9.5-6.4a1 1 0 0 0-1.53.85Z"/></svg>
-          </span>
-          <span class="work-card__tag">Medical</span>
-          <span class="work-card__time">0:32</span>
-        </span>
-        <span class="work-card__body">
-          <span class="work-card__client">Lumière Clinic</span>
-          <span class="work-card__title">Treatment explainer</span>
-          <span class="work-card__meta">Short-form edit &middot; 412K views</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work-card reveal" data-cat="personal" data-spotlight>
-      <button class="work-card__btn" type="button"
-        data-reel="assets/video/reel-02.mp4" data-webm="assets/video/reel-02.webm" data-poster="assets/img/work/reel-02.jpg"
-        data-title="Nika R. — GRWM morning routine" data-cat-label="Personal brand"
-        data-client="Nika R." data-meta="0:45 · 1.2M views"
-        data-desc="Get-ready-with-me cut with beat-matched transitions, soft captions and a hook that lands in the first 0.8 seconds.">
-        <span class="work-card__media">
-          <img src="assets/img/work/reel-02.jpg" alt="" width="720" height="1280" loading="lazy" />
-          <video muted loop playsinline preload="none" poster="assets/img/work/reel-02.jpg" aria-hidden="true" tabindex="-1">
-            <source src="assets/video/reel-02.webm" type="video/webm" />
-            <source src="assets/video/reel-02.mp4" type="video/mp4" />
-          </video>
-          <span class="work-card__scrim" aria-hidden="true"></span>
-          <span class="work-card__hook">Five minutes.<br />Zero rush.</span>
-          <span class="play play--card" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.6v12.8a1 1 0 0 0 1.53.85l9.5-6.4a1 1 0 0 0 0-1.7l-9.5-6.4a1 1 0 0 0-1.53.85Z"/></svg>
-          </span>
-          <span class="work-card__tag">Personal</span>
-          <span class="work-card__time">0:45</span>
-        </span>
-        <span class="work-card__body">
-          <span class="work-card__client">Nika R.</span>
-          <span class="work-card__title">GRWM morning routine</span>
-          <span class="work-card__meta">Short-form edit &middot; 1.2M views</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work-card reveal" data-cat="shortform" data-spotlight>
-      <button class="work-card__btn" type="button"
-        data-reel="assets/video/reel-03.mp4" data-webm="assets/video/reel-03.webm" data-poster="assets/img/work/reel-03.jpg"
-        data-title="Coach Arman — Hook test" data-cat-label="Short-form"
-        data-client="Coach Arman" data-meta="0:28 · 684K views"
-        data-desc="Three hook variations of the same fitness take, edited back-to-back to test retention before a paid push.">
-        <span class="work-card__media">
-          <img src="assets/img/work/reel-03.jpg" alt="" width="720" height="1280" loading="lazy" />
-          <video muted loop playsinline preload="none" poster="assets/img/work/reel-03.jpg" aria-hidden="true" tabindex="-1">
-            <source src="assets/video/reel-03.webm" type="video/webm" />
-            <source src="assets/video/reel-03.mp4" type="video/mp4" />
-          </video>
-          <span class="work-card__scrim" aria-hidden="true"></span>
-          <span class="work-card__hook">Stop training<br />for the mirror</span>
-          <span class="play play--card" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.6v12.8a1 1 0 0 0 1.53.85l9.5-6.4a1 1 0 0 0 0-1.7l-9.5-6.4a1 1 0 0 0-1.53.85Z"/></svg>
-          </span>
-          <span class="work-card__tag">Short-form</span>
-          <span class="work-card__time">0:28</span>
-        </span>
-        <span class="work-card__body">
-          <span class="work-card__client">Coach Arman</span>
-          <span class="work-card__title">Hook test — 3 variations</span>
-          <span class="work-card__meta">Short-form edit &middot; 684K views</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work-card reveal" data-cat="motion" data-spotlight>
-      <button class="work-card__btn" type="button"
-        data-reel="assets/video/reel-04.mp4" data-webm="assets/video/reel-04.webm" data-poster="assets/img/work/reel-04.jpg"
-        data-title="Derma Studio — Launch motion pack" data-cat-label="Motion graphics"
-        data-client="Derma Studio" data-meta="0:19 · brand kit"
-        data-desc="A launch motion pack: animated logo, end cards, stat cards and lower thirds built as reusable After Effects templates.">
-        <span class="work-card__media">
-          <img src="assets/img/work/reel-04.jpg" alt="" width="720" height="1280" loading="lazy" />
-          <video muted loop playsinline preload="none" poster="assets/img/work/reel-04.jpg" aria-hidden="true" tabindex="-1">
-            <source src="assets/video/reel-04.webm" type="video/webm" />
-            <source src="assets/video/reel-04.mp4" type="video/mp4" />
-          </video>
-          <span class="work-card__scrim" aria-hidden="true"></span>
-          <span class="work-card__hook">Launch day,<br />but calmer</span>
-          <span class="play play--card" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.6v12.8a1 1 0 0 0 1.53.85l9.5-6.4a1 1 0 0 0 0-1.7l-9.5-6.4a1 1 0 0 0-1.53.85Z"/></svg>
-          </span>
-          <span class="work-card__tag">Motion</span>
-          <span class="work-card__time">0:19</span>
-        </span>
-        <span class="work-card__body">
-          <span class="work-card__client">Derma Studio</span>
-          <span class="work-card__title">Launch motion pack</span>
-          <span class="work-card__meta">Motion graphics &middot; brand kit</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work-card reveal" data-cat="personal" data-spotlight>
-      <button class="work-card__btn" type="button"
-        data-reel="assets/video/reel-05.mp4" data-webm="assets/video/reel-05.webm" data-poster="assets/img/work/reel-05.jpg"
-        data-title="Haven Studio — Founder story" data-cat-label="Personal brand"
-        data-client="Haven Studio" data-meta="0:58 · 238K views"
-        data-desc="A founder story built from a 40-minute interview: punch-ins, b-roll and captions that keep the narrative moving.">
-        <span class="work-card__media">
-          <img src="assets/img/work/reel-05.jpg" alt="" width="720" height="1280" loading="lazy" />
-          <video muted loop playsinline preload="none" poster="assets/img/work/reel-05.jpg" aria-hidden="true" tabindex="-1">
-            <source src="assets/video/reel-05.webm" type="video/webm" />
-            <source src="assets/video/reel-05.mp4" type="video/mp4" />
-          </video>
-          <span class="work-card__scrim" aria-hidden="true"></span>
-          <span class="work-card__hook">Built in<br />quiet hours</span>
-          <span class="play play--card" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.6v12.8a1 1 0 0 0 1.53.85l9.5-6.4a1 1 0 0 0 0-1.7l-9.5-6.4a1 1 0 0 0-1.53.85Z"/></svg>
-          </span>
-          <span class="work-card__tag">Personal</span>
-          <span class="work-card__time">0:58</span>
-        </span>
-        <span class="work-card__body">
-          <span class="work-card__client">Haven Studio</span>
-          <span class="work-card__title">Founder story</span>
-          <span class="work-card__meta">Talking head edit &middot; 238K views</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work-card reveal" data-cat="shortform" data-spotlight>
-      <button class="work-card__btn" type="button"
-        data-reel="assets/video/reel-06.mp4" data-webm="assets/video/reel-06.webm" data-poster="assets/img/work/reel-06.jpg"
-        data-title="Modé — Skincare drop" data-cat-label="Short-form"
-        data-client="Modé" data-meta="0:24 · 890K views"
-        data-desc="Product drop reel: macro b-roll, synced sound design and a text-first hook for a skincare launch.">
-        <span class="work-card__media">
-          <img src="assets/img/work/reel-06.jpg" alt="" width="720" height="1280" loading="lazy" />
-          <video muted loop playsinline preload="none" poster="assets/img/work/reel-06.jpg" aria-hidden="true" tabindex="-1">
-            <source src="assets/video/reel-06.webm" type="video/webm" />
-            <source src="assets/video/reel-06.mp4" type="video/mp4" />
-          </video>
-          <span class="work-card__scrim" aria-hidden="true"></span>
-          <span class="work-card__hook">The three-step<br />glow</span>
-          <span class="play play--card" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 5.6v12.8a1 1 0 0 0 1.53.85l9.5-6.4a1 1 0 0 0 0-1.7l-9.5-6.4a1 1 0 0 0-1.53.85Z"/></svg>
-          </span>
-          <span class="work-card__tag">Short-form</span>
-          <span class="work-card__time">0:24</span>
-        </span>
-        <span class="work-card__body">
-          <span class="work-card__client">Modé</span>
-          <span class="work-card__title">Skincare drop</span>
-          <span class="work-card__meta">Short-form edit &middot; 890K views</span>
-        </span>
-      </button>
-    </article>
-  </div>
-
-  <p class="work__empty" id="work-empty" hidden>No projects in this category yet &mdash; <button class="text-link" type="button" data-filter="all">show everything</button>.</p>
 
   <div class="cta-strip reveal">
     <div>
@@ -759,7 +691,7 @@
       <div class="lightbox__loading" id="lb-loading" hidden>Loading clip…</div>
     </div>
     <div class="lightbox__info">
-      <p class="eyebrow" id="lb-cat">Medical &amp; aesthetic</p>
+      <p class="eyebrow" id="lb-cat">Selected work</p>
       <h3 id="lb-title">Project title</h3>
       <p id="lb-desc">Project description.</p>
       <div class="lightbox__meta">
@@ -771,7 +703,7 @@
       <button class="icon-btn" type="button" id="lb-prev" aria-label="Previous project">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg>
       </button>
-      <span class="lightbox__count" id="lb-count">1 / 6</span>
+      <span class="lightbox__count" id="lb-count">1 / 5</span>
       <button class="icon-btn" type="button" id="lb-next" aria-label="Next project">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg>
       </button>

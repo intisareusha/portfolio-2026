@@ -7,7 +7,18 @@
       "Shell(agent-browser:*)",
       "Shell(findstr:*)",
       "Shell(curl -s -o NUL -w \"awwfle.mp4 -> %{http_code} (%{size_download} bytes)\\n\" http://localhost:3000/assets/video/awwfle.mp4)",
-      "Shell(git:*)"
+      "Shell(git:*)",
+      "Shell(curl -s -o nul -w \"%{http_code}\" http://localhost:3000)",
+      "Shell(Select-String:*)",
+      "Shell(node -e \"fetch('http://localhost:3000').then(r=>r.text()).then(t=>{const needles=['about__intro','about__badge','step__num','phone__avatar img','ClipStack'];for(const n of needles)console.log(n, t.includes(n));console.log('stats/tools removed:', !t.includes('class=\\\"stats\\\"') && !t.includes('class=\\\"tools\\\"'));})\")",
+      "Shell(node server.mjs)",
+      "Shell(node -e \"const s=require('http');const get=(p)=>new Promise(r=>{s.get('http://localhost:3000'+p,res=>{r(p+' -> '+res.statusCode+' '+(res.headers['content-type']||''))})});(async()=>{for(const p of ['/','/assets/css/styles.css','/assets/js/main.js','/assets/video/slide_1.mp4','/assets/video/slide_5.mp4']){console.log(await get(p))}})()\")",
+      "powershell",
+      "Shell(node --check assets/js/main.js)",
+      "Shell(node \"C:\\Users\\bmc\\AppData\\Local\\Temp\\commandcode\\F--SMMA\\12a3f3a1-7664-4512-a596-1ff68d8f5582\\scratchpad\\verify-carousel.mjs\")",
+      "Shell(node -e \"const s=require('http');const get=(p)=>new Promise(r=>{s.get('http://localhost:3000'+p,res=>{r(p+' -> '+res.statusCode+' '+(res.headers['content-type']||''));res.resume()})});(async()=>{for(const p of ['/assets/video/firstvid.mp4','/assets/img/mypic.png']){console.log(await get(p))}})()\")",
+      "Shell(node \"C:\\Users\\bmc\\AppData\\Local\\Temp\\commandcode\\F--SMMA\\12a3f3a1-7664-4512-a596-1ff68d8f5582\\scratchpad\\check-lightbox.mjs\")",
+      "Shell(node \"C:\\Users\\bmc\\AppData\\Local\\Temp\\commandcode\\F--SMMA\\12a3f3a1-7664-4512-a596-1ff68d8f5582\\scratchpad\\check-hero.mjs\")"
     ],
     "deny": [],
     "defaultMode": "default"

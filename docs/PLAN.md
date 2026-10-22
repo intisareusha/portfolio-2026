@@ -45,7 +45,8 @@ Phases 3–4 untouched.
 4. **Phase 4 mapping** — `#service` `<option>` list must match the new 6 services, same order.
 
 ### Assets still to supply
-- Featured-work image (currently placeholder `assets/img/work/reel-01.jpg`) — send filename and I wire it.
+- ~~Featured-work image~~ **supplied** → `assets/img/mypic.png` (wired into the Featured Work card).
+- ~~Hero showreel~~ **supplied** → `assets/video/firstvid.mp4` (wired into the middle hero card).
 
 ### Run it
 - `npm start` → open <http://localhost:3000> (a server was already listening on :3000 during the session).
@@ -147,8 +148,12 @@ Fill these in during Phase 1, then reuse everywhere. Until then they stay litera
 - [x] L225 `hero__name` → `CLIP STACK`
 - [x] L226 `hero__lede` → agency one-liner in **"we" voice** (`{{AUDIENCE}}`)
 - [x] L227–233 buttons → "Let's Collaborate" / "Our Work" (was "My Work")
-- [x] L235–241 portrait `<img>` **replaced with a showreel `<video class="hero__reel">`** — sources
-      point to `assets/video/showreel.mp4` / `.webm` (**drop the file in later**); poster = `reel-01.jpg`
+- [x] L235–241 portrait `<img>` **replaced with a showreel `<video class="hero__reel">`** — source
+      = `assets/video/firstvid.mp4` (supplied); poster = `reel-01.jpg`
+- [x] Showreel **autoplays (looped) while `#home` is in view** and pauses when scrolled away
+      (IntersectionObserver). **No native controls** — a single `.hero__sound` mute/unmute button
+      sits bottom-right. Tries to play with sound; if the browser blocks it, it starts muted and
+      unmutes on the first interaction (or via the button).
 - [x] L237–240 `.chip--float` "320+ clips delivered" **removed**
 - [x] Showreel sized **`330×230`** (`aspect-ratio: 330 / 230`); space added above (`margin-top`) and below (card padding); hero content vertically centred
 
@@ -166,7 +171,7 @@ Fill these in during Phase 1, then reuse everywhere. Until then they stay litera
 - [ ] Dots unchanged (still 3 quotes — add/remove if quote count changes)
 
 ### 1e. Featured Work card (L246–258)
-- [x] Video `<button data-reel…>` **replaced with a static image** `<a class="featured__media" href="#work" data-scroll>` — real image supplied later (uses `reel-01.jpg` as placeholder)
+- [x] Video `<button data-reel…>` **replaced with a static image** `<a class="featured__media" href="#work" data-scroll>` — image = `assets/img/mypic.png` (supplied)
 - [x] Play button + duration badge removed; `featured__hook` kept; top badge → "Featured '26"
 - [x] Clicking the featured media scrolls to **Our Work** (`#work`)
 - [x] "See all projects" link **removed**
@@ -233,28 +238,27 @@ Fill these in during Phase 1, then reuse everywhere. Until then they stay litera
 
 **Covers:** `#work` (L357–554). **Files:** `index.html`.
 
-### 3a. Section head + filters
-- [ ] L360–362 eyebrow/title/lede
-- [ ] L366–370 filter buttons: `data-filter` values (`all`, `shortform`, `motion`, `medical`,
-      `personal`) and the `All` count (`6`) must match your categories & card count.
-      **If you rename categories**, update `data-filter` here AND `data-cat` on each card.
+### 3a. Section head (done)
+- [x] Heading "Work that stops the scroll." + lede **centered** (`.work .section__head`)
+- [x] Filter buttons **removed** — no `data-filter` / `data-cat` anywhere (owner request)
 
-### 3b. The 6 work cards (L374–540)
-For **each** `<article class="work-card">`:
-- [ ] `data-cat` = one of your filter values
-- [ ] Button `data-reel` / `data-webm` / `data-poster` → your file paths
-- [ ] Button `data-title`, `data-cat-label`, `data-client`, `data-meta`, `data-desc`
-- [ ] `<img src>` + `<video>` poster → your poster path
-- [ ] `work-card__hook` (2-line overlay), `work-card__tag`, `work-card__time`
-- [ ] `work-card__body`: client / title / meta visible text
+### 3b. Work carousel (done) — 5 square video cards
+- [x] `.work__gallery` / `.work__track` replace the old grid
+- [x] **Drag to slide:** press-and-hold then move left/right — the row follows the pointer.
+      It only moves **while the pointer is down**, so a plain click still opens the clip
+      (a drag-then-release click is swallowed)
+- [x] Cards trace a **half-circle arc** — each `.work-card` is lifted + tilted by its
+      distance from the centre (tune `CURVE` / `MAX_TILT` in `main.js`)
+- [x] 5 cards, each **480px × 480px** (`aspect-ratio: 1/1`), video autoplaying muted inside
+- [x] Sources = `assets/video/slide_1.mp4 … slide_5.mp4`; click → lightbox at 9:16 **with sound**
+- [ ] Replace the slide videos + titles with real project content when ready
 
-> **To add a 7th project:** copy a whole `<article>` block, give it unique
-> `data-cat`/`data-reel`/`data-poster`/`data-webm`, then bump the `All` count on L366.
-> Filter, lightbox counter and prev/next pick it up automatically.
+> **To add a project:** copy a whole `<article class="work-card">` block with a unique
+> `data-reel` / `data-poster`; the arc, drag and lightbox counter pick it up automatically.
 
-### 3c. Empty note + CTA strip
-- [ ] L543 empty-state text (usually untouched)
-- [ ] L547–550 CTA strip headline
+### 3c. CTA strip
+- [x] Empty-state note **removed** (no filters, so it never shows)
+- [ ] CTA strip headline ("Your project could be the next one here.")
 
 ### Image slots (posters)
 - [ ] `assets/img/work/reel-0X.jpg` (6 files) — supply 9:16 stills, tell me names.
@@ -262,9 +266,9 @@ For **each** `<article class="work-card">`:
 - [ ] Delete orphan `assets/video/Replacing-reel-05.mp4` if unused.
 
 ### Verify Phase 3
-- [ ] Each filter button shows/hides the right cards; counts correct
-- [ ] Clicking a card opens the lightbox with correct title/desc/client/counter
-- [ ] Prev/next cycles only the currently-visible cards; hover previews play
+- [x] Press-and-drag slides the row; a plain click opens the clip (drag-then-release swallowed)
+- [x] Cards form a half-circle arc and are square (480×480) with video playing inside
+- [x] Clicking a card opens the lightbox (9:16) with sound; prev/next cycles all 5
 
 ---
 

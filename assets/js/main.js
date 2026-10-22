@@ -255,62 +255,187 @@
     showQuote(0);
   }
 
-  /* -------------------------------------------------------- work previews */
+  /* -------------------------------------------------------- work carousel */
   const workCards = $$(".work-card");
+  const gallery = $("#work-gallery");
+  const track = $("#work-track");
 
-  workCards.forEach((card) => {
-    const video = $("video", card);
-    if (!video) return;
+  if (gallery && track && workCards.length) {
+    const CURVE = 46; // how far the arc lifts cards off the baseline
+    const MAX_TILT = 5; // degrees of fan rotation at the edges
+    const ease = prefersReduced() ? 1 : 0.2;
+    let current = 0.5;
+    let target = 0.5;
+    let maxScroll = 0;
+    let galleryWidth = 0;
+    let frame = null;
+    let dragging = false;
+    let dragMoved = false;
+    let dragStartX = 0;
+    let dragStartTarget = 0;
 
-    card.addEventListener("pointerenter", () => {
-      if (!canHover() || prefersReduced()) return;
-      card.classList.add("is-previewing");
-      const playPromise = video.play();
-      if (playPromise && typeof playPromise.catch === "function") playPromise.catch(() => {});
-    });
+    const measure = () => {
+      galleryWidth = gallery.clientWidth;
+      maxScroll = Math.max(0, track.scrollWidth - galleryWidth);
+    };
 
-    card.addEventListener("pointerleave", () => {
-      card.classList.remove("is-previewing");
-      video.pause();
-      try {
-        video.currentTime = 0;
-      } catch (error) {
-        /* ignore seek errors on partially loaded clips */
+    const draw = () => {
+      frame = null;
+      current += (target - current) * ease;
+      if (Math.abs(target - current) < 0.0005) current = target;
+
+      const shift = -current * maxScroll;
+      track.style.transform = `translate3d(${shift}px, 0, 0)`;
+
+      const centre = galleryWidth / 2;
+      workCards.forEach((card) => {
+        const cardCentre = card.offsetLeft + card.offsetWidth / 2 + shift;
+        const rel = Math.max(-1.15, Math.min(1.15, (cardCentre - centre) / centre));
+        const lift = -CURVE * Math.max(0, 1 - rel * rel);
+        const tilt = rel * MAX_TILT;
+        card.style.transform = `translate3d(0, ${lift.toFixed(2)}px, 0) rotate(${tilt.toFixed(2)}deg)`;
+      });
+
+      if (current !== target) frame = requestAnimationFrame(draw);
+    };
+
+    const schedule = () => {
+      if (frame === null) frame = requestAnimationFrame(draw);
+    };
+
+    // Press-and-hold, then drag left/right to slide the cards. The row only
+    // moves while the pointer is down, so a plain click still opens the clip.
+    gallery.addEventListener("pointerdown", (event) => {
+      dragging = true;
+      dragMoved = false;
+      dragStartX = event.clientX;
+      // Grab from wherever the cards currently sit so the row doesn't jump.
+      target = current;
+      dragStartTarget = current;
+      if (gallery.setPointerCapture) {
+        try {
+          gallery.setPointerCapture(event.pointerId);
+        } catch (error) {
+          /* pointer capture is best-effort */
+        }
       }
     });
-  });
-
-  /* ------------------------------------------------------------- filtering */
-  const filterButtons = $$(".filters .filter");
-  const emptyNote = $("#work-empty");
-
-  const applyFilter = (filter) => {
-    filterButtons.forEach((button) => {
-      const active = button.dataset.filter === filter;
-      button.classList.toggle("is-active", active);
-      button.setAttribute("aria-pressed", String(active));
+    gallery.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      const dx = event.clientX - dragStartX;
+      if (Math.abs(dx) > 6) dragMoved = true;
+      target = Math.max(0, Math.min(1, dragStartTarget - dx / (maxScroll || 1)));
+      schedule();
     });
+    const endDrag = () => {
+      dragging = false;
+    };
+    gallery.addEventListener("pointerup", endDrag);
+    gallery.addEventListener("pointercancel", endDrag);
+    gallery.addEventListener("pointerleave", endDrag);
 
-    let visible = 0;
-    workCards.forEach((card, i) => {
-      const show = filter === "all" || card.dataset.cat === filter;
-      card.classList.toggle("is-hidden", !show);
-      if (show) {
-        visible += 1;
-        card.classList.add("is-in");
-        card.style.setProperty("--reveal-delay", `${Math.min(i, 5) * 55}ms`);
+    // Swallow the click that ends a drag so it doesn't open the lightbox.
+    gallery.addEventListener(
+      "click",
+      (event) => {
+        if (!dragMoved) return;
+        event.stopPropagation();
+        event.preventDefault();
+        dragMoved = false;
+      },
+      true
+    );
+
+    gallery.setAttribute("tabindex", "0");
+    gallery.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") {
+        target = Math.min(1, target + 0.24);
+        schedule();
+      } else if (event.key === "ArrowLeft") {
+        target = Math.max(0, target - 0.24);
+        schedule();
       }
     });
 
-    if (emptyNote) emptyNote.hidden = visible > 0;
-  };
+    window.addEventListener("resize", () => {
+      measure();
+      schedule();
+    });
+    window.addEventListener("load", () => {
+      measure();
+      schedule();
+    });
+    measure();
+    draw();
+  }
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => applyFilter(button.dataset.filter));
-  });
-  if (emptyNote) {
-    const reset = $("[data-filter='all']", emptyNote);
-    if (reset) reset.addEventListener("click", () => applyFilter("all"));
+  /* ------------------------------------------------------------- hero reel */
+  const heroReel = $("#hero-reel");
+  const heroSound = $("#hero-sound");
+  const heroSection = $("#home");
+
+  if (heroReel && heroSound) {
+    let wantSound = true;
+
+    const syncSoundButton = () => {
+      const muted = heroReel.muted;
+      heroSound.classList.toggle("is-muted", muted);
+      heroSound.setAttribute("aria-pressed", String(!muted));
+      heroSound.setAttribute("aria-label", muted ? "Unmute showreel" : "Mute showreel");
+    };
+
+    const playHero = () => {
+      heroReel.muted = !wantSound;
+      const attempt = heroReel.play();
+      if (attempt && typeof attempt.catch === "function") {
+        attempt.catch(() => {
+          // Autoplay with sound was blocked — start muted so it still plays.
+          if (wantSound) {
+            heroReel.muted = true;
+            syncSoundButton();
+          }
+          const retry = heroReel.play();
+          if (retry && typeof retry.catch === "function") retry.catch(() => {});
+        });
+      }
+    };
+
+    heroSound.addEventListener("click", () => {
+      wantSound = !wantSound;
+      heroReel.muted = !wantSound;
+      syncSoundButton();
+      playHero();
+    });
+
+    // Browsers block autoplay-with-sound until the visitor interacts: turn the
+    // sound back on at the first interaction unless they muted it themselves.
+    const unlockSound = () => {
+      if (wantSound && heroReel.muted) {
+        heroReel.muted = false;
+        syncSoundButton();
+      }
+      window.removeEventListener("pointerdown", unlockSound);
+      window.removeEventListener("keydown", unlockSound);
+    };
+    window.addEventListener("pointerdown", unlockSound);
+    window.addEventListener("keydown", unlockSound);
+
+    if (heroSection && "IntersectionObserver" in window && !prefersReduced()) {
+      const heroObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) playHero();
+            else heroReel.pause();
+          });
+        },
+        { threshold: 0.15 }
+      );
+      heroObserver.observe(heroSection);
+    } else if (!prefersReduced()) {
+      playHero();
+    }
+
+    syncSoundButton();
   }
 
   /* --------------------------------------------------------- video lightbox */
@@ -329,10 +454,7 @@
     let currentIndex = 0;
     let lastTrigger = null;
 
-    const visibleWorkTriggers = () => {
-      const list = workCards.filter((card) => !card.classList.contains("is-hidden")).map((card) => card.querySelector("[data-reel]"));
-      return list.filter(Boolean);
-    };
+    const visibleWorkTriggers = () => workCards.map((card) => card.querySelector("[data-reel]")).filter(Boolean);
 
     let loadingTimer = null;
     const hideLoading = () => {
@@ -355,6 +477,7 @@
       const webmOk = data.webm && lbVideo.canPlayType('video/webm; codecs="vp9"');
       lbVideo.poster = data.poster || "";
       lbVideo.src = webmOk ? data.webm : data.reel;
+      lbVideo.muted = false;
       lbVideo.load();
       const playPromise = lbVideo.play();
       if (playPromise && typeof playPromise.catch === "function") playPromise.catch(() => {});
@@ -366,14 +489,6 @@
     };
 
     const openLightbox = (trigger) => {
-      if (!trigger.closest(".work-card")) {
-        // Featured card: make sure its project is visible in the grid first.
-        const match = workCards.find((card) => {
-          const btn = card.querySelector("[data-reel]");
-          return btn && btn.dataset.reel === trigger.dataset.reel;
-        });
-        if (match && match.classList.contains("is-hidden")) applyFilter("all");
-      }
       const list = visibleWorkTriggers();
       const index = list.findIndex((item) => item.dataset.reel === trigger.dataset.reel);
       currentIndex = index > -1 ? index : 0;
