@@ -14,7 +14,7 @@
   const prefersReduced = () => reduceQuery.matches;
   const canHover = () => hoverQuery.matches;
 
-  const EMAIL = "hello@hanifeh.studio";
+  const EMAIL = "hello@clipstack.com";
 
   /* ---------------------------------------------------------------- header */
   const topbar = $("#topbar");
@@ -157,7 +157,6 @@
   }
 
   /* ---------------------------------------------------- services accordion */
-  const serviceItems = $$(".service");
   const serviceButtons = $$(".service__toggle");
 
   const setServiceState = (button, open) => {
@@ -171,18 +170,6 @@
       const isOpen = button.getAttribute("aria-expanded") === "true";
       serviceButtons.forEach((other) => setServiceState(other, false));
       setServiceState(button, !isOpen);
-    });
-  });
-
-  // Service CTAs prefill the contact form (both lists share the same order).
-  const serviceSelect = $("#service");
-  $$(".service__panel .text-link").forEach((link) => {
-    link.addEventListener("click", () => {
-      const item = link.closest(".service");
-      const index = serviceItems.indexOf(item);
-      if (serviceSelect && index > -1 && serviceSelect.options[index + 1]) {
-        serviceSelect.selectedIndex = index + 1;
-      }
     });
   });
 
@@ -649,13 +636,9 @@
     };
 
     const buildMessage = () => {
-      const service = $("#service");
-      const budget = $("#budget");
       return [
         `Name: ${fields.name.value.trim()}`,
         `Email: ${fields.email.value.trim()}`,
-        `Service: ${service && service.value ? service.value : "Not specified"}`,
-        `Budget: ${budget && budget.value ? budget.value : "Not specified"}`,
         "",
         "Project details:",
         fields.message.value.trim(),
@@ -712,8 +695,4 @@
       });
     }
   }
-
-  /* ------------------------------------------------------------------ year */
-  const yearEl = $("#year");
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 })();

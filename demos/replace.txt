@@ -1,6 +1,1 @@
-need to make a little bit of change in the our work section .. so far everything in fine.. but what i want is that when user long clicks on any video and be able to move the 
-cards right or left .. what you did is cards are moving where the cursor is going.. but that is creating a problem because when i try to click and on any perticular video the 
-card slides in the direction of cursor.. so i want to slide the cards smoothly as long as the user is pressing on the mouse and moving right or left.. the user should have the control 
-where the cards slides ...
-
-also the showreel on the home section should play automatically with sound when the user stays on the home section  .. and there should be no button but only one button .. that the mute button .. 
+i want to change the theme of the website .. currently the way it looks , anyone say it is AI slop .. so i want to change the theme of the website to white and keep the black grid in the back gorund 
